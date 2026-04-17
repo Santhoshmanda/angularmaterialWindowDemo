@@ -1,0 +1,98 @@
+:host { display: block; }
+
+/* ── Wrapper ─────────────────────────────────── */
+.win-wrapper {
+  display: flex;
+  flex-direction: column;
+  background: #f0f0f0;
+  border: 1px solid #7a8b98;
+  box-shadow: 4px 4px 14px rgba(0,0,0,0.3);
+  border-radius: 0;
+  overflow: hidden;
+  font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
+
+  &.maximized {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    transform: none !important;
+    z-index: 9999;
+  }
+}
+
+/* ── Title Bar ───────────────────────────────── */
+.win-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  padding: 0 0 0 10px;
+  flex-shrink: 0;
+  cursor: grab;
+  user-select: none;
+  background: #3D4C5A;
+  border-bottom: 1px solid #2c3a45;
+
+  &:active { cursor: grabbing; }
+}
+
+.win-title {
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+/* ── Control Buttons ─────────────────────────── */
+.win-controls {
+  display: flex;
+  height: 100%;
+}
+
+.wc-btn {
+  width: 46px;
+  height: 100%;
+  border: none;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s ease;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1;
+  padding: 0;
+
+  &:hover { background: rgba(255,255,255,0.15); }
+}
+
+.wc-close:hover { background: #c0392b !important; }
+
+/* ── Body ────────────────────────────────────── */
+.win-body {
+  flex: 1;
+  background: #fff;
+  overflow: auto;
+  min-height: 300px;
+}
+
+/* ── Status Bar ──────────────────────────────── */
+.win-statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: #666;
+  background: #f0f0f0;
+  border-top: 1px solid #c8c8c8;
+  flex-shrink: 0;
+}

@@ -1,0 +1,41 @@
+<div class="win-wrapper"
+     [style.width]="!isMaximized() ? (data.width || '860px') : null"
+     [class.maximized]="isMaximized()"
+     [class.minimized]="isMinimized()"
+     cdkDrag
+     [cdkDragDisabled]="isMaximized()">
+
+  <!-- ── Title Bar ──────────────────────────────── -->
+  <div class="win-titlebar" cdkDragHandle>
+    <span class="win-title">{{ data.title }}</span>
+    <div class="win-controls">
+      <button class="wc-btn wc-min"
+              matTooltip="Minimize"
+              (click)="minimize(); $event.stopPropagation()">
+        &#8722;
+      </button>
+      <button class="wc-btn wc-max"
+              [matTooltip]="isMaximized() ? 'Restore' : 'Maximize'"
+              (click)="toggleMaximize(); $event.stopPropagation()">
+        <span>{{ isMaximized() ? '❐' : '□' }}</span>
+      </button>
+      <button class="wc-btn wc-close"
+              matTooltip="Close"
+              (click)="close()">
+        &#10005;
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Dynamic Content Host ───────────────────── -->
+  <div class="win-body" *ngIf="!isMinimized()">
+    <ng-container #contentHost></ng-container>
+  </div>
+
+  <!-- ── Status Bar ─────────────────────────────── -->
+  <div class="win-statusbar" *ngIf="!isMinimized()">
+    <span>{{ data.title }}</span>
+    <span>{{ isMaximized() ? 'Maximized' : 'Windowed' }}</span>
+  </div>
+
+</div>

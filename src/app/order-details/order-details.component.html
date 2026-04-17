@@ -1,0 +1,118 @@
+<div class="order-container">
+      
+  <!-- Top Overview Section -->
+  <div class="overview-panel">
+    <div class="tab-links">
+      <span class="tab active">Order Summary</span>
+      <span class="tab">Shipping Info</span>
+      <span class="tab">Payment Details</span>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-col">
+        <div class="info-item">
+          <span class="label">Order ID:</span>
+          <span class="value link">ORD-88219A</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Status:</span>
+          <span class="value status-badge processing">Processing</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Sales Rep:</span>
+          <span class="value">--</span>
+        </div>
+      </div>
+      
+      <div class="info-col">
+        <div class="info-item">
+          <span class="label">Customer Name:</span>
+          <span class="value link">{{ customerName }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Account Type:</span>
+          <span class="value">Enterprise</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Priority:</span>
+          <span class="value">High</span>
+        </div>
+      </div>
+
+      <div class="info-col">
+        <div class="info-item">
+          <span class="label">Order Date:</span>
+          <span class="value">10/24/2026</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Est. Delivery:</span>
+          <span class="value link">10/28/2026</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Warehouse:</span>
+          <span class="value">East Coast (NJ-01)</span>
+        </div>
+      </div>
+
+      <div class="info-col">
+        <div class="info-item">
+          <span class="label">Order Total:</span>
+          <span class="value"><strong>$14,520.00</strong></span>
+        </div>
+        <div class="info-item">
+          <span class="label">Payment Terms:</span>
+          <span class="value">Net 30</span>
+        </div>
+        <div class="info-item"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Line Items Section -->
+  <div class="section-title">Order Line Items</div>
+  
+  <div class="tab-ribbon">
+    <div class="rtab active">Hardware</div>
+    <div class="rtab">Software Licenses</div>
+    <div class="rtab">Services</div>
+    <div class="spacer"></div>
+    <button class="action-btn outline">Export CSV</button>
+    <button class="action-btn primary" (click)="onAddItem()">Add Item</button>
+  </div>
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Stock Status</th>
+          <th>Supplier</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of lineItems">
+          <td><code>{{ item.sku }}</code></td>
+          <td><strong>{{ item.name }}</strong></td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.price | currency }}</td>
+          <td>{{ item.qty }}</td>
+          <td>{{ (item.price * item.qty) | currency }}</td>
+          <td>
+            <span class="stock-indicator" [class.in-stock]="item.inStock" [class.low-stock]="!item.inStock">
+              {{ item.inStock ? 'In Stock' : 'Backordered' }}
+            </span>
+          </td>
+          <td>{{ item.supplier }}</td>
+          <td class="actions">Edit | Remove</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
