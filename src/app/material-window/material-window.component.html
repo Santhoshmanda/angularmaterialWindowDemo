@@ -28,12 +28,12 @@
   </div>
 
   <!-- ── Dynamic Content Host ───────────────────── -->
-  <div class="win-body" *ngIf="!isMinimized()">
+  <div class="win-body">
     <ng-container #contentHost></ng-container>
   </div>
 
   <!-- ── Status Bar ─────────────────────────────── -->
-  <div class="win-statusbar" *ngIf="!isMinimized()">
+  <div class="win-statusbar">
     <span>{{ data.title }}</span>
     <span>{{ isMaximized() ? 'Maximized' : 'Windowed' }}</span>
   </div>

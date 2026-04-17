@@ -19,6 +19,10 @@
     transform: none !important;
     z-index: 9999;
   }
+
+  &.minimized {
+    .win-body, .win-statusbar { display: none; }
+  }
 }
 
 /* ── Title Bar ───────────────────────────────── */

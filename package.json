@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "demo:local": "ng serve --host 0.0.0.0 --disable-host-check",
-    "demo:remote": "npx localtunnel --port 4200"
+    "demo:remote": "npx localtunnel --port 4200",
+    "deploy:firebase": "npm run build && npx firebase-tools deploy"
   },
   "private": true,
   "dependencies": {
