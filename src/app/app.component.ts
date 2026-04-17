@@ -186,6 +186,7 @@ export class AppComponent {
     this.dialog.open(MaterialWindowComponent, {
       panelClass: 'custom-dialog-container',
       hasBackdrop: true,
+      disableClose: true,
       backdropClass: 'mat-window-overlay',
       // We pass the dynamic component here!
       data: { 

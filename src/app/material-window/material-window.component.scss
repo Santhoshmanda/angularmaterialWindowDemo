@@ -21,7 +21,7 @@
   }
 
   &.minimized {
-    .win-body, .win-statusbar { display: none; }
+    .win-body, .win-statusbar { display: none !important; }
   }
 }
 

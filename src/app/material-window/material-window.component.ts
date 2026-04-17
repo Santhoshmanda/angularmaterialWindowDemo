@@ -8,6 +8,7 @@ import {
   AfterViewInit,
   OnDestroy,
   ComponentRef,
+  ChangeDetectorRef
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -43,7 +44,8 @@ export class MaterialWindowComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     public dialogRef: MatDialogRef<MaterialWindowComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: MaterialWindowData
+    @Inject(MAT_DIALOG_DATA) public data: MaterialWindowData,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngAfterViewInit(): void {
@@ -72,11 +74,13 @@ export class MaterialWindowComponent implements AfterViewInit, OnDestroy {
   minimize(): void {
     if (this.isMaximized()) this.isMaximized.set(false);
     this.isMinimized.update(v => !v);
+    this.cdr.detectChanges();
   }
 
   toggleMaximize(): void {
     if (this.isMinimized()) this.isMinimized.set(false);
     this.isMaximized.update(v => !v);
+    this.cdr.detectChanges();
   }
 
   close(): void {

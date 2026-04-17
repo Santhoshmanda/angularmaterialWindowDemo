@@ -31,6 +31,7 @@ export class OrderDetailsComponent {
     this.dialog.open(MaterialWindowComponent, {
       panelClass: 'custom-dialog-container',
       hasBackdrop: this.blockBackground,
+      disableClose: true,
       backdropClass: this.blockBackground ? 'mat-window-overlay' : undefined,
       data: {
         title: 'Add New Item',
